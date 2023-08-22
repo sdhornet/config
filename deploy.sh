@@ -10,7 +10,7 @@ fi
 apt-get update && apt-get upgrade -y
 
 # Install the required packages
-apt-get install tmux git zsh task-xfce-desktop dbus-x11 openjdk-11-jdk -y
+apt-get install tmux git zsh task-xfce-desktop dbus-x11 openjdk-11-jdk make -y
 
 # Download tmux conf file
 wget https://raw.githubusercontent.com/sdhornet/config/main/tmux.conf -O .tmux.conf
@@ -41,6 +41,12 @@ rm -rf /usr/local/go && tar -C /usr/local -xzf go1.21.0.linux-amd64.tar.gz
 echo "export PATH=\$PATH:/usr/local/go/bin" >> ~/.zshrc
 source ~/.zshrc
 go version
+
+#Install Evilnginx
+git clone https://github.com/kgretzky/evilginx2.git /opt/evilginx2
+cd /opt/evilnginx2
+make
+cd /root
 
 echo "All tasks completed!"
 
