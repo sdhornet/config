@@ -13,7 +13,7 @@ apt-get update && apt-get upgrade -y
 apt-get install tmux git zsh task-xfce-desktop dbus-x11 openjdk-11-jdk -y
 
 # Download tmux conf file
-wget https://raw.githubusercontent.com/sdhornet/config/main/tmux.conf
+wget https://raw.githubusercontent.com/sdhornet/config/main/tmux.conf -O .tmux.conf
 
 # Install ohmyzsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
