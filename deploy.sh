@@ -12,6 +12,12 @@ apt-get update && apt-get upgrade -y
 # Install the required packages
 apt-get install tmux git zsh task-xfce-desktop dbus-x11 openjdk-11-jdk -y
 
+# Download tmux conf file
+wget https://raw.githubusercontent.com/sdhornet/config/main/tmux.conf
+
+# Install ohmyzsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 # Remove existing .zshrc and download a new one from the specified link
 rm ~/.zshrc
 wget https://gitlab.com/kalilinux/packages/kali-defaults/-/raw/kali/master/etc/skel/.zshrc
@@ -30,3 +36,4 @@ systemctl stop display-manager #lightdm
 systemctl restart nxserver
 
 echo "All tasks completed!"
+
