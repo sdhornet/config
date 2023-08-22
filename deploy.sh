@@ -10,7 +10,7 @@ fi
 apt-get update && apt-get upgrade -y
 
 # Install the required packages
-apt-get install tmux git zsh task-xfce-desktop dbus-x11 openjdk-11-jdk -y
+apt-get install tmux git zsh task-xfce-desktop dbus-x11 openjdk-17-jdk -y
 
 # Remove existing .zshrc and download a new one from the specified link
 rm ~/.zshrc
