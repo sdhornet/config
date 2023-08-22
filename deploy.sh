@@ -48,5 +48,11 @@ cd /opt/evilnginx2
 make
 cd /root
 
+# Install certbot
+apt install snapd -y
+snap install core; sudo snap refresh core
+snap install --classic certbot
+ln -s /snap/bin/certbot /usr/bin/certbot
+
 echo "All tasks completed!"
 
