@@ -10,7 +10,7 @@ fi
 apt-get update && apt-get upgrade -y
 
 # Install the required packages
-apt-get install tmux git zsh task-xfce-desktop dbus-x11 openjdk-11-jdk make -y
+apt-get install tmux git zsh task-xfce-desktop dbus-x11 openjdk-11-jdk make bat -y
 
 # Download tmux conf file
 wget https://raw.githubusercontent.com/sdhornet/config/main/tmux.conf -O .tmux.conf
@@ -55,5 +55,10 @@ snap install core; sudo snap refresh core
 snap install --classic certbot
 ln -s /snap/bin/certbot /usr/bin/certbot
 
-echo "All tasks completed!"
+# Setup Bat
+mv /usr/bin/batcat /usr/bin/bat
+mkdir /root/.config/bat
+touch /root/.config/bat/config
+echo '--theme="1337"' >> /root/.config/bat/config
 
+echo "All tasks completed!"
