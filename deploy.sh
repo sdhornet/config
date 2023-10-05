@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Deploy tools to a fresh VPS
+# Nate Golick
+# 09/10/23
+
+# USAGE:
+# wget https://tinyurl.com/deployVPS -O deploy.sh
+# chmod +x deploy.sh
+# ./deploy.sh
+
 # Ensure the script is run as root
 if [[ $EUID -ne 0 ]]; then
     echo "This script must be run as root" 1>&2
@@ -35,15 +44,15 @@ sed -i.bak 's/#NXdListenAddress ""/NXdListenAddress "127.0.0.1"/' /usr/NX/etc/se
 systemctl stop display-manager #lightdm
 systemctl restart nxserver
 
-# Installing GO
+# Installing Go
 wget https://go.dev/dl/go1.21.0.linux-amd64.tar.gz
 rm -rf /usr/local/go && tar -C /usr/local -xzf go1.21.0.linux-amd64.tar.gz
 echo "export PATH=\$PATH:/usr/local/go/bin" >> ~/.zshrc
-source ~/.zshrc
+#source ~/.zshrc
 rm go1.21.0.linux-amd64.tar.gz
 go version
 
-#Install Evilnginx
+#Install Evilnginx2
 git clone https://github.com/kgretzky/evilginx2.git /opt/evilginx2
 cd /opt/evilnginx2
 make
@@ -57,8 +66,8 @@ ln -s /snap/bin/certbot /usr/bin/certbot
 
 # Setup Bat
 mv /usr/bin/batcat /usr/bin/bat
-mkdir /root/.config/bat
+mkdir -p /root/.config/bat
 touch /root/.config/bat/config
 echo '--theme="1337"' >> /root/.config/bat/config
 
-echo "All tasks completed!"
+echo "[+] All tasks completed!"
