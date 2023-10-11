@@ -19,7 +19,7 @@ fi
 apt-get update && apt-get upgrade -y
 
 # Install the required packages
-apt-get install tmux git zsh task-xfce-desktop dbus-x11 openjdk-17-jdk make bat -y
+apt-get install tmux git zsh task-xfce-desktop dbus-x11 openjdk-17-jdk make bat btop++ -y
 
 # Download tmux conf file
 wget https://raw.githubusercontent.com/sdhornet/config/main/tmux.conf -O .tmux.conf
