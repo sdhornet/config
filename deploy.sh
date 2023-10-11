@@ -32,6 +32,7 @@ dpkg -i nomachine_8.8.1_1_amd64.deb >/dev/null
 # Modify the NX server configuration
 sed -i.bak 's/#EnableNetworkBroadcast 1/EnableNetworkBroadcast 0/' /usr/NX/etc/server.cfg
 sed -i.bak 's/#NXdListenAddress ""/NXdListenAddress "127.0.0.1"/' /usr/NX/etc/server.cfg
+sed -i 's/^#NXUDPPort 4000/NXUDPPort 0/' /usr/NX/etc/server.cfg
 
 # Restart related services
 systemctl stop display-manager #lightdm
