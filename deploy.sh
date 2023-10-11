@@ -24,13 +24,6 @@ apt-get install tmux git zsh task-xfce-desktop dbus-x11 openjdk-11-jdk make bat 
 # Download tmux conf file
 wget https://raw.githubusercontent.com/sdhornet/config/main/tmux.conf -O .tmux.conf
 
-# Install ohmyzsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# Remove existing .zshrc and download a new one from the specified link
-rm ~/.zshrc
-wget https://gitlab.com/kalilinux/packages/kali-defaults/-/raw/kali/master/etc/skel/.zshrc
-
 # Remove nomachine if it exists and install a new version
 dpkg --purge nomachine
 wget -q 'https://download.nomachine.com/download/8.8/Linux/nomachine_8.8.1_1_amd64.deb'
@@ -45,29 +38,36 @@ systemctl stop display-manager #lightdm
 systemctl restart nxserver
 
 # Installing Go
-wget https://go.dev/dl/go1.21.0.linux-amd64.tar.gz
-rm -rf /usr/local/go && tar -C /usr/local -xzf go1.21.0.linux-amd64.tar.gz
-echo "export PATH=\$PATH:/usr/local/go/bin" >> ~/.zshrc
-#source ~/.zshrc
-rm go1.21.0.linux-amd64.tar.gz
-go version
+# wget https://go.dev/dl/go1.21.0.linux-amd64.tar.gz
+# rm -rf /usr/local/go && tar -C /usr/local -xzf go1.21.0.linux-amd64.tar.gz
+# echo "export PATH=\$PATH:/usr/local/go/bin" >> ~/.zshrc
+# #source ~/.zshrc
+# rm go1.21.0.linux-amd64.tar.gz
+# go version
 
 #Install Evilnginx2
-git clone https://github.com/kgretzky/evilginx2.git /opt/evilginx2
-cd /opt/evilnginx2
-make
-cd /root
+# git clone https://github.com/kgretzky/evilginx2.git /opt/evilginx2
+# cd /opt/evilnginx2
+# make
+# cd /root
 
 # Install certbot
-apt install snapd -y
-snap install core; sudo snap refresh core
-snap install --classic certbot
-ln -s /snap/bin/certbot /usr/bin/certbot
+# apt install snapd -y
+# snap install core; sudo snap refresh core
+# snap install --classic certbot
+# ln -s /snap/bin/certbot /usr/bin/certbot
 
 # Setup Bat
 mv /usr/bin/batcat /usr/bin/bat
 mkdir -p /root/.config/bat
 touch /root/.config/bat/config
 echo '--theme="1337"' >> /root/.config/bat/config
+
+# Install ohmyzsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Remove existing .zshrc and download a new one from the specified link
+rm ~/.zshrc
+wget https://gitlab.com/kalilinux/packages/kali-defaults/-/raw/kali/master/etc/skel/.zshrc
 
 echo "[+] All tasks completed!"
