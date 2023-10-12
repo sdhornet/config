@@ -5,7 +5,6 @@
 # 09/10/23
 
 # USAGE:
-# wget https://tinyurl.com/deployVPS -O deploy.sh
 # chmod +x deploy.sh
 # ./deploy.sh
 
@@ -38,25 +37,23 @@ sed -i 's/^#NXUDPPort 4000/NXUDPPort 0/' /usr/NX/etc/server.cfg
 systemctl stop display-manager #lightdm
 systemctl restart nxserver
 
-# Installing Go
-# wget https://go.dev/dl/go1.21.0.linux-amd64.tar.gz
-# rm -rf /usr/local/go && tar -C /usr/local -xzf go1.21.0.linux-amd64.tar.gz
-# echo "export PATH=\$PATH:/usr/local/go/bin" >> ~/.zshrc
-# #source ~/.zshrc
-# rm go1.21.0.linux-amd64.tar.gz
-# go version
+#Installing Go
+wget https://go.dev/dl/go1.21.0.linux-amd64.tar.gz
+rm -rf /usr/local/go && tar -C /usr/local -xzf go1.21.0.linux-amd64.tar.gz
+rm go1.21.0.linux-amd64.tar.gz
+#go version
 
 #Install Evilnginx2
-# git clone https://github.com/kgretzky/evilginx2.git /opt/evilginx2
-# cd /opt/evilnginx2
-# make
-# cd /root
+git clone https://github.com/kgretzky/evilginx2.git /opt/evilginx2
+cd /opt/evilnginx2
+make
+cd /root
 
-# Install certbot
-# apt install snapd -y
-# snap install core; sudo snap refresh core
-# snap install --classic certbot
-# ln -s /snap/bin/certbot /usr/bin/certbot
+Install certbot
+apt install snapd -y
+snap install core; sudo snap refresh core
+snap install --classic certbot
+ln -s /snap/bin/certbot /usr/bin/certbot
 
 # Setup Bat
 mv /usr/bin/batcat /usr/bin/bat
@@ -70,5 +67,9 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 # Remove existing .zshrc and download a new one from the specified link
 rm ~/.zshrc
 wget https://gitlab.com/kalilinux/packages/kali-defaults/-/raw/kali/master/etc/skel/.zshrc
+
+# Update our new zshrc file with the Go Path
+echo "export PATH=\$PATH:/usr/local/go/bin" >> ~/.zshrc
+source ~/.zshrc
 
 echo "[+] All tasks completed!"
