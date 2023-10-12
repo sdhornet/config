@@ -45,6 +45,8 @@ rm go1.21.0.linux-amd64.tar.gz
 
 #Install Evilnginx2
 git clone https://github.com/kgretzky/evilginx2.git /opt/evilginx2
+# Wait for download
+sleep 5
 cd /opt/evilnginx2
 make
 cd /root
@@ -70,6 +72,5 @@ wget https://gitlab.com/kalilinux/packages/kali-defaults/-/raw/kali/master/etc/s
 
 # Update our new zshrc file with the Go Path
 echo "export PATH=\$PATH:/usr/local/go/bin" >> ~/.zshrc
-source ~/.zshrc
 
 echo "[+] All tasks completed!"
