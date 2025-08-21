@@ -2,7 +2,7 @@
 
 # Deploy tools to a fresh VPS
 # Nate Golick
-# 09/10/23
+# 08/20/2025
 
 # USAGE:
 # chmod +x deploy.sh
@@ -21,7 +21,7 @@ echo -e "[+] Initial updates Complete\n"
 
 # Install the required packages
 echo -e "[+] Package updates Started\n"
-apt-get install tmux git zsh task-xfce-desktop dbus-x11 make bat btop++ vim -y
+apt-get install tmux git zsh task-xfce-desktop dbus-x11 make bat btop++ vim net-tools -y
 
 # Download tmux conf file
 wget https://raw.githubusercontent.com/sdhornet/config/main/tmux.conf -O .tmux.conf
@@ -36,8 +36,8 @@ echo -e "[+] NoMachine install Complete\n"
 
 # Modify the NX server configuration
 echo -e "[+] NoMachine configuration Started\n"
-sed -i.bak 's/#EnableNetworkBroadcast 1/EnableNetworkBroadcast 0/' /usr/NX/etc/server.cfg
-sed -i.bak 's/#NXdListenAddress ""/NXdListenAddress "127.0.0.1"/' /usr/NX/etc/server.cfg
+sed -i 's/#EnableLocalNetworkBroadcast 1/EnableLocalNetworkBroadcast 0/' /usr/NX/etc/server.cfg
+sed -i 's/#NXDListenAddress ""/NXDListenAddress "127.0.0.1"/' /usr/NX/etc/server.cfg
 sed -i 's/^#NXUDPPort 4000/NXUDPPort 0/' /usr/NX/etc/server.cfg
 
 # Restart related services
