@@ -39,6 +39,7 @@ echo -e "[+] NoMachine configuration Started\n"
 sed -i 's/#EnableLocalNetworkBroadcast 1/EnableLocalNetworkBroadcast 0/' /usr/NX/etc/server.cfg
 sed -i 's/#NXDListenAddress ""/NXDListenAddress "127.0.0.1"/' /usr/NX/etc/server.cfg
 sed -i 's/^#NXUDPPort 4000/NXUDPPort 0/' /usr/NX/etc/server.cfg
+sed -i 's/#DisplayServerExtraOptions /DisplayServerExtraOptions "-nolisten tcp"/' /usr/NX/etc/node.cfg
 
 # Restart related services
 systemctl stop display-manager #lightdm
