@@ -21,7 +21,7 @@ echo -e "[+] Initial updates Complete\n"
 
 # Install the required packages
 echo -e "[+] Package updates Started\n"
-apt-get install tmux git zsh task-xfce-desktop dbus-x11 make bat btop++ -y
+apt-get install tmux git zsh task-xfce-desktop dbus-x11 make bat btop++ vim -y
 
 # Download tmux conf file
 wget https://raw.githubusercontent.com/sdhornet/config/main/tmux.conf -O .tmux.conf
@@ -30,10 +30,9 @@ echo -e "[+] Package updates Complete\n"
 # Remove nomachine if it exists and install a new version
 echo -e "[+] NoMachine install Started\n"
 dpkg --purge nomachine
-wget -q 'https://download.nomachine.com/download/8.11/Linux/nomachine_8.11.3_4_amd64.deb'
-dpkg -i nomachine_8.11.3_4_amd64.deb >/dev/null
+wget -q 'https://web9001.nomachine.com/download/9.1/Linux/nomachine_9.1.24_6_amd64.deb'
+dpkg -i nomachine_9.1.24_6_amd64.deb >/dev/null
 echo -e "[+] NoMachine install Complete\n"
-
 
 # Modify the NX server configuration
 echo -e "[+] NoMachine configuration Started\n"
@@ -47,11 +46,11 @@ systemctl restart nxserver
 echo -e "[+] NoMachine configuration Complete\n"
 
 #Installing Go
-echo -e "[+] Installing Go\n"
-wget https://go.dev/dl/go1.22.1.linux-amd64.tar.gz
-rm -rf /usr/local/go && tar -C /usr/local -xzf go1.22.1.linux-amd64.tar.gz
-rm go1.22.1.linux-amd64.tar.gz
-echo -e "[+] Go install Complete\n"
+#echo -e "[+] Installing Go\n"
+#wget https://go.dev/dl/go1.22.1.linux-amd64.tar.gz
+#rm -rf /usr/local/go && tar -C /usr/local -xzf go1.22.1.linux-amd64.tar.gz
+#rm go1.22.1.linux-amd64.tar.gz
+#echo -e "[+] Go install Complete\n"
 #go version
 
 #Install Evilnginx2
@@ -86,6 +85,6 @@ wget https://gitlab.com/kalilinux/packages/kali-defaults/-/raw/kali/master/etc/s
 git clone https://github.com/zsh-users/zsh-autosuggestions /usr/share/zsh-autosuggestions
 
 # Update our new zshrc file with the Go Path
-echo "export PATH=\$PATH:/usr/local/go/bin" >> ~/.zshrc
+#echo "export PATH=\$PATH:/usr/local/go/bin" >> ~/.zshrc
 
 echo "[+] All tasks completed!"
