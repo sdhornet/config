@@ -2,7 +2,7 @@
 # ABOUTME: Network interface status for tmux status bar
 # ABOUTME: Shows active interface + IP with priority: tun0 > tailscale > eth0 (public) > eno1
 
-# tun0 — VPN (HTB, pentest engagements)
+# tun0 — VPN
 if ip addr show dev tun0 2>/dev/null | grep -q 'inet '; then
     ip=$(ip -4 addr show dev tun0 | grep -oP 'inet \K[\d.]+')
     echo "#[fg=brightyellow]tun0: $ip"
